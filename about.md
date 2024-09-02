@@ -22,23 +22,6 @@ Beyond the lab, I’m passionate about hiking and sports, with a particular love
 	 <img src="{{site.url}}/assets/images/grad.jpg" style="border:none; width:auto; max-height:200px;" />
 	<img src="{{site.url}}/assets/images/bowl.jpg" style="border:none; width:auto; max-height:200px;" />
 	<img src="{{site.url}}/assets/images/fog2.jpg" style="border:none; width:auto; max-height:200px;" />
-	<img src="{{site.url}}/assets/images/nextrna.jpeg" style="border:none; width:auto; max-height:200px;" />
-	<img src="{{site.url}}/assets/images/photo1.jpg" style="border:none; width:auto; max-height:200px;" />
-	<img src="{{site.url}}/assets/images/photo2.jpg" style="border:none; width:auto; max-height:200px;" />
-	<img src="{{site.url}}/assets/images/photo3.jpg" style="border:none; width:auto; max-height:200px;" />
-	<img src="{{site.url}}/assets/images/photo4.jpg" style="border:none; width:auto; max-height:200px;" />
-	<img src="{{site.url}}/assets/images/photo5.jpg" style="border:none; width:auto; max-height:200px;" />
-	<img src="{{site.url}}/assets/images/photo6.JPG" style="border:none; width:auto; max-height:200px;" />
-	<img src="{{site.url}}/assets/images/photo7.jpg" style="border:none; width:auto; max-height:200px;" />
-	<img src="{{site.url}}/assets/images/photo8.jpg" style="border:none; width:auto; max-height:200px;" />
-	<img src="{{site.url}}/assets/images/photo9.JPG" style="border:none; width:auto; max-height:200px;" />
-	<img src="{{site.url}}/assets/images/photo10.jpg" style="border:none; width:auto; max-height:200px;" />
-	<img src="{{site.url}}/assets/images/photo11.jpg" style="border:none; width:auto; max-height:200px;" />
-	<img src="{{site.url}}/assets/images/photo12.JPG" style="border:none; width:auto; max-height:200px;" />
-	<img src="{{site.url}}/assets/images/photo13.JPG" style="border:none; width:auto; max-height:200px;" />
-	<img src="{{site.url}}/assets/images/evronylab.jpg" style="border:none; width:auto; max-height:200px;" />
 </div>
 
-
 Connect and say hi on [LinkedIn](https://linkedin.com/in/srikanth-srinivas-4a6047224) or reach out via [Email](srikanth.srinivas.2024@bristol.ac.uk)
-
