@@ -1,12 +1,12 @@
 # main text of home
 name: Srikanth Srinivas
-bio: 'Postgraduate Bioinformatics student at the University of Bristol'
+bio: 'Postgraduate Bioinformatics student at the University of Bristol | Ex-Research Intern at NIHR Global Health Research Unit Lab'
  
 # if it's an external image, update below for true
 external-image: false
 picture: 'assets/images/Amoolya.jpg'
 
-url: http://amoolyasrinivasa.github.io
+url: http://srikanth-srinivas.github.io
 # your url: http://USERNAME.github.io (if you don't already have a site)
 
 permalink: /:title/
@@ -31,9 +31,9 @@ disqus: false
 # pinterest: mypinterest
 # youtube: myyoutube
 # spotify: myspotify
-linkedin: amoolya-srinivasa
-github: amoolyasrinivasa
-email: amoolyasrinivasa@gmail.com
+linkedin: [srikanth srinivas](https://linkedin.com/in/srikanth-srinivas-4a6047224)
+github: [srikanth-srinivas](https://github.com/srikanth-srinvas)
+email: srikanth.srinivas.2024@bristol.ac.uk
 #gscholar: O4Hrt44AAAAJ&hl=en
 #medium: medium
 #vimeo: myvimeo
