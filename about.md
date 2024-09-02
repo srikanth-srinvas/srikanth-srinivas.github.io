@@ -13,7 +13,7 @@ I'm currently a postgraduate [MSc Bioinformatics student at the University of Br
 
 I’ve had the opportunity to contribute to genomic surveillance projects analyzing thousands of WHO-priority pathogens, honing my skills in data-driven microbial informatics. My work has been recognized internationally, with opportunities to present at several international conferences.
 
-Beyond the lab, I’m passionate about hiking and sports and love playing cricket and badminton. I’m also a tech enthusiast, constantly exploring new gadgets and innovations in the tech industry.
+Beyond the lab, I’m passionate about hiking and sports, with a particular love for playing cricket and badminton. As a tech enthusiast, I’m constantly exploring new gadgets and innovations in the tech industry.
 
 ---**Photo Frolics**
 
