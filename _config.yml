@@ -1,13 +1,11 @@
-# main text of home
 name: Srikanth Srinivas
 bio: 'Postgraduate Bioinformatics student at the University of Bristol | Ex-Research Intern at NIHR Global Health Research Unit Lab'
- 
-# if it's an external image, update below for true
+
+# If it's an external image, update below for true
 external-image: false
-picture: 'assets/images/Amoolya.jpg'
+picture: 'assets/images/mainimg.png'
 
 url: http://srikanth-srinivas.github.io
-# your url: http://USERNAME.github.io (if you don't already have a site)
 
 permalink: /:title/
 theme: jekyll-theme-merlot
@@ -21,33 +19,22 @@ highlighter: rouge # other options?
 # analytics-piwik-url: 'piwik.my-host.com'
 # analytics-piwik-id: 1
 
-# if you don't want comments in your posts, set to false
+# If you don't want comments in your posts, set to false
 disqus: false
 
-# if you don't have any of social below, comment the line
-# facebook:
-# google: mygoogle
-# instagram: myinstagram
-# pinterest: mypinterest
-# youtube: myyoutube
-# spotify: myspotify
+# Social Media
 linkedin: [srikanth srinivas](https://linkedin.com/in/srikanth-srinivas-4a6047224)
 github: [srikanth-srinivas](https://github.com/srikanth-srinvas)
 email: srikanth.srinivas.2024@bristol.ac.uk
-#gscholar: O4Hrt44AAAAJ&hl=en
-#medium: medium
-#vimeo: myvimeo
 
-# do you want a larger site? change the option below
-# options: [normal, large] | default: normal
-# normal = 560px / large = 810px
+# Do you want a larger site? Change the option below
 width: large
 
-# if you don't need pagination, comment the *paginate* configs below
+# If you don't need pagination, comment the *paginate* configs below
 # paginate: 5
 # paginate_path: "blog/:num/"
 
-# if you don't need projects, comment the *projects* configs below
+# If you don't need projects, comment the *projects* configs below
 # if you don't need "about" or "blog", comment them out below
 # likewise, comment out lists, research, or bookshelf pages
 about: true
@@ -59,16 +46,16 @@ maverick: false
 research: false
 bookshelf: false
 
-# do you want to show the "read time" of the posts?
+# Do you want to show the "read time" of the posts?
 read-time: true
 
-# do you want to show the "tags" inside the posts?
+# Do you want to show the "tags" inside the posts?
 show-tags: true
 
-# related posts inside a post?
+# Related posts inside a post?
 related: true
 
-# do you want some animations?
+# Do you want some animations?
 animation: true
 
 gems:
@@ -80,6 +67,19 @@ gems:
   - jekyll-paginate
 
 jekyll-mentions:
-    base_url: https://github.com
+  base_url: https://github.com
 
-exclude: [README.md, Gemfile, Gemfile.lock, node_modules, gulpfile.js, package.json, _site, src, vendor, CNAME, indigo-gh-pages.zip, Rakefile,travis.sh]
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - gulpfile.js
+  - package.json
+  - _site
+  - src
+  - vendor
+  - CNAME
+  - indigo-gh-pages.zip
+  - Rakefile
+  - travis.sh
