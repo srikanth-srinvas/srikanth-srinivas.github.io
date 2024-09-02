@@ -40,4 +40,5 @@ Beyond the lab, I’m passionate about hiking and sports, with a particular love
 </div>
 
 
-Connect and say hi on [LinkedIn](https://www.linkedin.com/in/amoolya-srinivasa) or reach out via [Email](srinivasa.a@northeastern.edu)
+Connect and say hi on [LinkedIn](https://linkedin.com/in/srikanth-srinivas-4a6047224) or reach out via [Email](srikanth.srinivas.2024@bristol.ac.uk)
+
