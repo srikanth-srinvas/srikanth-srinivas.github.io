@@ -23,7 +23,7 @@ Beyond the lab, I’m passionate about hiking and sports, with a particular love
 	<img src="{{site.url}}/assets/images/img3.PNG" style="border:none; width:auto; max-height:200px;" />
 	<img src="{{site.url}}/assets/images/img4.JPG" style="border:none; width:auto; max-height:200px;" />
 	<img src="{{site.url}}/assets/images/img5.JPG" style="border:none; width:auto; max-height:200px;" />
-	<img src="{{site.url}}/assets/images/img6.PNG" style="border:none; width:auto; max-height:200px;" />
+	<img src="{{site.url}}/assets/images/img6(1).PNG" style="border:none; width:auto; max-height:200px;" />
 	<img src="{{site.url}}/assets/images/img7.JPG" style="border:none; width:auto; max-height:200px;" />
 	<img src="{{site.url}}/assets/images/img8.JPG" style="border:none; width:auto; max-height:200px;" />
 	<img src="{{site.url}}/assets/images/img9.JPG" style="border:none; width:auto; max-height:200px;" />
