@@ -17,6 +17,6 @@ I am a current MSc Bioinformatics student at the University of Bristol with a st
 **Bioinformatics Intern, [NIHR Global Health Research Unit Project](https://ghru.pathogensurveillance.net/#home)**<br>
 **[Central Research Laboratory](https://www.crlkims.com/), Kempegowda Institute of Medical Sciences, Bangalore, India (May 2023 - March 2024)**
 
-* Contributed to data-driven microbial informatics research by analyzing whole-genome sequencing data of over **5,000 WHO priority pathogens**.
+* Contributed to data-driven microbial informatics research by analyzing whole-genome sequencing data of over 5,000 WHO priority pathogens.
 * Developed bioinformatics pipelines to streamline the extraction of valuable insights from raw sequencing data.
-* Effectively communicated research findings through presentations at **two international and one national conference** and periodic journal club presentations.
+* Effectively communicated research findings through presentations at two international and one national conference and periodic journal club presentations.
