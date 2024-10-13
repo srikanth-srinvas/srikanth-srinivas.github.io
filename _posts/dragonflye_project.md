@@ -329,3 +329,104 @@ echo "Mean of len values calculated. Result saved in $csv_len_file"
 **5. Average contig depth**
 - calculate_contig_avg_depth.sh 
 - This script extracts contig depth from an assembled FASTA file and calculates the average depth for all contigs. Usage ./calculate_contig_avg_depth.sh <input_fasta_file> Replace <input_fasta_file> with your assembled FASTA file path.
+```bash
+#!/bin/bash
+
+# Check for the correct number of command-line arguments
+if [ "$#" -ne 1 ]; then
+   echo "Usage: $0 <input_fasta_file>"
+   exit 1
+fi
+
+# Input FASTA file
+fasta_file="$1"
+
+# Check if the input file exists
+if [ ! -f "$fasta_file" ]; then
+   echo "Error: File $fasta_file not found."
+   exit 1
+fi
+
+# Extract file name without extension
+file_prefix=$(basename "$fasta_file" .fasta)
+
+# Output CSV file in the same directory as the input file
+csv_file="$(dirname "$fasta_file")/${file_prefix}_mean_cov.csv"
+
+# Extract cov= values and calculate mean
+awk '/^>/ { sum += gensub(/^.*cov=([0-9.]+).*$/, "\\1", "g", $0); count++; next } END { if (count > 0) print sum / count }' "$fasta_file" > "$csv_file"
+
+echo "Mean of cov values calculated. Result saved in $csv_file"
+```
+
+**6. Number of contigs and circular contigs**
+- extract_contig_stats.sh 
+- This script extracts the number of contigs and the number of circular contigs from a FASTA file. Usage ./extract_contig_stats.sh <input_fasta_file>
+```bash
+#!/bin/bash
+
+# Check for the correct number of command-line arguments
+if [ "$#" -ne 1 ]; then
+   echo "Usage: $0 <input_fasta_file>"
+   exit 1
+fi
+
+# Input FASTA file
+fasta_file="$1"
+
+# Check if the input file exists
+if [ ! -f "$fasta_file" ]; then
+   echo "Error: File $fasta_file not found."
+   exit 1
+fi
+
+# Extract file name without extension
+file_name=$(basename "$fasta_file" .fasta)
+
+# Create a directory named "contig_info" inside the directory of the input FASTA file
+output_dir="$(dirname "$fasta_file")/contig_info"
+mkdir -p "$output_dir"
+
+# Output CSV file in the "contig_info" directory
+csv_file="$output_dir/${file_name}_contig_stats.csv"
+
+# Count the number of contigs and circular contigs
+num_contigs=$(grep -c "^>" "$fasta_file")
+num_circular_contigs=$(grep -c "^>.*circular=Y" "$fasta_file")
+
+# Write the result to the CSV file without column headers
+echo "$file_name,$num_contigs,$num_circular_contigs" >> "$csv_file"
+
+echo "Contig statistics calculated. Result saved in $csv_file"
+```
+**6. Reporting**
+- Prepare a comprehensive summary report highlighting key findings, comparisons between polishing model combinations, and any notable observations. 
+
+**Sample results sheet**
+| ID | Complete and single-copy BUSCOs (S) % | GC % | N50 | Depth | Total no of bps | Avg contig length | No of contigs | No of circular contigs | Avg depth of contigs |
+|---|---|---|---|---|---|---|---|---|---|
+| nigeria-acinetobacter_bauminnii-01 | 99.5 | 39.1 | 339622 | 1523 | 1614554 | 2162 | 0 | 3725 | 0 | 2214 |
+| nigeria-acinetobacter_bauminnii-02 | 99.6 | 39.0 | 139727 | 2119 | 461479 | 7274 | 2 | 0 | 443 | 772 |
+| nigeria-acinetobacter_bauminnii-03 | 99.5 | 39.2 | 140085 | 3615 | 562649 | 9990 | 9 | 8 | 1064 | 953 |
+| nigeria-acinetobacter_bauminnii-04 | 99.2 | 39.1 | 240791 | 3955 | 161453 | 3671 | 3 | 6 | 877 | 0 | 331 |
+| nigeria-acinetobacter_bauminnii-05 | 99.6 | 39 | 39271 | 1918 | 461459 | 1980 | 8 | 1 | 902 | 753 |
+| nigeria-escherichia_coli-01.fa | 99.5 | 50.3 | 94945 | 3264 | 218971 | 5773 | 7 | 7 | 695 | 475 | 29.7 |
+| nigeria-escherichia_coli-02.fa | 99.5 | 50.3 | 94944 | 9334 | 420268 | 8043 | 9 | 0 | 608 | 364 | 17.3 |
+| nigeria-escherichia_coli-03.fa | 99.3 | 50.3 | 34899 | 8466 | 428765 | 5073 | 3 | 3 | 959 | 911 | 410 | 49.3 |
+
+## Observation of Results
+**General Trends**
+- BUSCO Completeness: All combinations generally exhibit high BUSCO completeness, indicating good genome assembly quality.
+- GC Content: The GC content varies across the different samples, but remains relatively consistent within each combination.
+- Contig Length and Number: The average contig length and number of contigs appear to be influenced by the specific combination of polishing tools used.
+
+## Specific Observations:
+
+**Combination 1 (Racon+Medaka+Pilon+Polypolish):**
+- This combination consistently achieves high BUSCO completeness and GC content across all samples.
+- The average contig length and number of contigs vary, suggesting that the combination's effectiveness might be influenced by the specific characteristics of each sample.
+**Combination 2 (Racon+Polypolish):**
+- This combination also performs well in terms of BUSCO completeness and GC content.
+- The average contig length and number of contigs may differ slightly compared to Combination 1, indicating that the inclusion of Medaka and Pilon in Combination 1 might have a minor impact.
+**Combination 3 (Racon):**
+While Racon alone can produce decent results, the addition of other polishing tools in Combinations 1 and 2 generally leads to improvements in certain metrics.
