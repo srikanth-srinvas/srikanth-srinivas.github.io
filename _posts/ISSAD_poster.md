@@ -4,13 +4,17 @@ title: "Insights into pbp Allelic mutations conferring resistance to Beta-Lactam
 layout: post
 date: 2024-07-02
 tag:
-- Streptococcus pneumoniae
-- Capsular switching
-- Pneumococcal diseases
-- Bacterial evolution
+- Group B Streptococcus (GBS)
+- β-lactam antibiotics
+- Antibiotic resistance
+- PBP mutations
+- Whole-genome sequencing (WGS)
+- Bioinformatics
 - Genomics
-- Phylogenetics
-- Recombination events
+- Public health
+- Epidemiology
+- Bacterial infections
+- Pbp2x gene
 
 
 
