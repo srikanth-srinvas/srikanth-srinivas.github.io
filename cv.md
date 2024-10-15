@@ -24,27 +24,27 @@ I am a current MSc Bioinformatics student at the University of Bristol with a st
 
 ## Skills Summary
 **Computational Skills**
-Python, R, Shell, Nextflow, Docker, Git, Linux, Anaconda, Miniconda, ​HPC and Slurm, Open-Source Tools and Technologies
+Python, R, Shell, Nextflow, Docker, Git, Linux, Anaconda, Miniconda, ​HPC and Slurm, Open-Source Tools and Technologies <br>
 **Open-Source Platforms**
-Bioconda, Bioconductor, CRAN, nf-core, BioPython
+Bioconda, Bioconductor, CRAN, nf-core, BioPython <br>
 **Genome Assembly and QC**
-SPAdes, Velvet, Flye, QUAST, BUSCO, Trimmomatic, FASTQC, LIGHTER, MASH, Seqtk, MultiQC
+SPAdes, Velvet, Flye, QUAST, BUSCO, Trimmomatic, FASTQC, LIGHTER, MASH, Seqtk, MultiQC <br>
 **Sequence Alignment**
-MUSCLE, Clustal Omega, MAFFT
+MUSCLE, Clustal Omega, MAFFT <br>
 **SNP Analysis**
-BWA, GATK, SAMtools, bedtools, Snippy, SNP-sites, FreeBayes, Picard, VCFtools, BCFtools
+BWA, GATK, SAMtools, bedtools, Snippy, SNP-sites, FreeBayes, Picard, VCFtools, BCFtools <br>
 **Phylogeny**
-Roary, Panaroo, Ggtree, Bactdating, BEAST, IQ-TREE, Gubbins, FastTree, iTOL, Microreact
+Roary, Panaroo, Ggtree, Bactdating, BEAST, IQ-TREE, Gubbins, FastTree, iTOL, Microreact <br>
 **Data Mining and Retrieval**
- NCBI, European Nucleotide Archive (ENA), NCBI Variation Viewer, Ensembl, UCSC (Genome Browser, Table Browser), Galaxy, IGV, dbSNP, ClinVar, SNPEffect and SNPedia
+ NCBI, European Nucleotide Archive (ENA), NCBI Variation Viewer, Ensembl, UCSC (Genome Browser, Table Browser), Galaxy, IGV, dbSNP, ClinVar, SNPEffect and SNPedia <br>
 **AMR Analysis and Annotation**
-AMRFinderPlus, ABRICATE, ResFinder, Prokka, Bakta, Kleborate, CRISPR-CAS FINDER, Bactinspector
+AMRFinderPlus, ABRICATE, ResFinder, Prokka, Bakta, Kleborate, CRISPR-CAS FINDER, Bactinspector <br>
 **Molecular docking and Drug Discovery**
-Autodock vina, Biovia Discovery studio, iGEMDock, SwissADME
+Autodock vina, Biovia Discovery studio, iGEMDock, SwissADME <br>
 **Lab Techniques**
-Basics of Sequencing using Illumina and Oxford Nanopore platforms, DNA/RNA extraction, Qubit, Nanodrop, Gel Electrophoresis, ID & AST using VITEK, Microbiology Aseptic Techniques
+Basics of Sequencing using Illumina and Oxford Nanopore platforms, DNA/RNA extraction, Qubit, Nanodrop, Gel Electrophoresis, ID & AST using VITEK, Microbiology Aseptic Techniques <br>
 **Soft skills**
-Collaborative Working, Problem-Solving, Adaptability, Time Management, Attention to Detail, Scientific Writing, Critical Thinking, Research Ethics
+Collaborative Working, Problem-Solving, Adaptability, Time Management, Attention to Detail, Scientific Writing, Critical Thinking, Research Ethics <br>
 
 ## Publications
 [Geographical distribution, disease association and diversity of Klebsiella pneumoniae K/L and O antigens in India: roadmap for vaccine development: Varun Shamanna, **Srikanth Srinivas**, Natacha Couto, Geetha Nagaraj, Shyama Prasad Sajankila, Harshitha Gangaiah Krishnappa, Kavitha Arakalgud Kumar, David M. Aanensen, Ravikumar Kadahalli Lingegowda and NIHR Global Health Research Unit on genomic surveillance - India consortium Microb Genom. 2024 Jul;10(7):001271. PMID: 39037209; PMCID: PMC11316559](https://doi.org/10.1099/mgen.0.001271)
