@@ -25,10 +25,10 @@ description: "The Global Threat of ST147 Klebsiella pneumoniae"
 
 ---
 ## Introduction
-**ST147 Klebsiella pneumoniae has emerged as a significant global health concern due to its multidrug resistance and rapid spread. While extensively studied in European and North American settings, its prevalence and characteristics in India and Southeast Asia remain under-explored. This study aimed to comprehensively characterize ST147 isolates from India and compare them to a global dataset to understand their unique features and contribution to the global burden of MDR K. pneumoniae.**
+**ST147 *Klebsiella pneumoniae* has emerged as a significant global health concern due to its multidrug resistance and rapid spread. While extensively studied in European and North American settings, its prevalence and characteristics in India and Southeast Asia remain under-explored. This study aimed to comprehensively characterize ST147 isolates from India and compare them to a global dataset to understand their unique features and contribution to the global burden of MDR *K. pneumoniae*.**
 
 ## Background
-- ST147's Global Rise: ST147 K. pneumoniae has been identified as a major contributor to the global burden of antimicrobial resistance, particularly in healthcare settings. <br>
+- ST147's Global Rise: ST147 *K. pneumoniae* has been identified as a major contributor to the global burden of antimicrobial resistance, particularly in healthcare settings. <br>
 - India's Unique Challenges: India faces a unique challenge due to the high prevalence of ST147 strains carrying various carbapenemase genes.<br>
 - Knowledge Gaps: Despite previous studies, a comprehensive understanding of ST147's epidemiology, transmission pathways, and molecular mechanisms in India remains elusive.<br>
 

@@ -25,7 +25,7 @@ description: "Predicting Resistance Trends of ESKAPE Pathogens using R"
 
 ---
 ## Introduction
-**This project contains R scripts associated with a study ocused on understanding the geographical distribution and diversity of Klebsiella pneumoniae serotypes in India. Using genomic data from Klebsiella pneumoniae isolates, we employed Fisher’s exact test to examine the relationship between specific serotypes and geographical regions. I employed Simpson’s diversity index to assess serotype diversity within different regions. By combining these statistical analyses with the geographical data, I was able to identify patterns in serotype distribution and uncover potential regional variations in the pathogen’s virulence and antibiotic resistance.**
+**This project contains R scripts associated with a study ocused on understanding the geographical distribution and diversity of *Klebsiella pneumoniae* serotypes in India. Using genomic data from *Klebsiella pneumoniae* isolates, we employed Fisher’s exact test to examine the relationship between specific serotypes and geographical regions. I employed Simpson’s diversity index to assess serotype diversity within different regions. By combining these statistical analyses with the geographical data, I was able to identify patterns in serotype distribution and uncover potential regional variations in the pathogen’s virulence and antibiotic resistance.**
 
 This work is published in the journal Microbial Genomics under the DOI: [https://doi.org/10.1099/mgen.0.001271]
 
