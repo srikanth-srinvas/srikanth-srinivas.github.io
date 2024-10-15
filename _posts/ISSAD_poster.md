@@ -19,7 +19,7 @@ tag:
 
 
 projects: true
-description: "UInsights into pbp Allelic mutations conferring resistance to Beta-Lactams in GBS isolates from India"
+description: "Insights into pbp Allelic mutations conferring resistance to Beta-Lactams in GBS isolates from India"
 ---
 
 **Bangalore, India 2023**
