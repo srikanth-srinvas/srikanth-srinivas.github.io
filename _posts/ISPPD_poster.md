@@ -4,16 +4,13 @@ title: "Unraveling Capsular Switching in Indian Streptococcus pneumoniae Isolate
 layout: post
 date: 2024-07-02
 tag:
-- machine learning
-- R
-- ESKAPE pathogens
-- public health
-- healthcare
-- epidemiology
-- global health
-- infectious diseases
-- bacteria
-- antibiotic resistance
+- Streptococcus pneumoniae
+- Capsular switching
+- Pneumococcal diseases
+- Bacterial evolution
+- Genomics
+- Phylogenetics
+- Recombination events
 
 
 
