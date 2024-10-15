@@ -4,16 +4,13 @@ title: "The Global Threat of ST147 Klebsiella pneumoniae
 layout: post
 date: 2024-07-02
 tag:
-- machine learning
-- R
-- ESKAPE pathogens
-- public health
-- healthcare
-- epidemiology
-- global health
-- infectious diseases
-- bacteria
-- antibiotic resistance
+- Klebsiella pneumoniae
+- ST147
+- MDR (Multidrug-resistant)
+- Nosocomial infections
+- Antimicrobial resistance (AMR)
+- Time-scaled Phylogenetics 
+- R programming
 
 
 

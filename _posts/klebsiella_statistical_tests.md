@@ -4,17 +4,15 @@ title: "K and O loci
 layout: post
 date: 2024-07-02
 tag:
-- machine learning
 - R
-- ESKAPE pathogens
-- public health
-- healthcare
-- epidemiology
-- global health
-- infectious diseases
-- bacteria
-- antibiotic resistance
-
+- Klebsiella pneumoniae
+- K loci
+- O loci
+- Capsule serotyping
+- Antibiotic resistance
+- Virulence factors
+- Public health
+- Infectious diseases
 
 
 projects: true
