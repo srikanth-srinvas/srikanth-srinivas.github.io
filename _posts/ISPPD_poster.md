@@ -21,7 +21,7 @@ description: "Unraveling Capsular Switching in Indian Streptococcus pneumoniae I
 **Bangalore, India 2024**
 
 ---
-### I presented this project as a poster in the 13th meeting of the International Society of Pneumonia and Pneumococcal Diseases (ISPPD) held in Cape Town, South Africa
+#### I presented this project as a poster in the 13th meeting of the International Society of Pneumonia and Pneumococcal Diseases (ISPPD) held in Cape Town, South Africa
 ## Introduction
 *Streptococcus pneumoniae*, a common respiratory pathogen, employs a clever strategy to evade the host immune system: capsular switching. By exchanging capsule biosynthesis loci, this bacterium can change its appearance, making it harder for the immune system to recognize and attack. This study aimed to investigate capsular switching events among Indian *S. pneumoniae* isolates and explore the genetic mechanisms driving this phenomenon.
 
