@@ -32,7 +32,9 @@ description: "Predicting Resistance Trends of ESKAPE Pathogens using R"
 
 ## 1. Data Cleaning and Preparation
 This code utilizes the dplyr and tidyr libraries to filter and manipulate the raw data based on specific criteria. You can adjust the filter conditions within the filter() function to select desired species, countries, etc. The filtered data is then saved as a new CSV file.
-```R
+
+
+```{r}
 # Sorting the raw data based on requirement
 library(dplyr)
 library(magrittr)
@@ -51,9 +53,13 @@ filtered_data <- raw_data %>%
 # Replace "/path/to/your/output/file.csv" with the desired output path and file name
 write.csv(filtered_data, '/path/to/your/output/file.csv')
 ```
-- Removing Empty Columns:   
-This snippet employs the dplyr library to identify and eliminate empty columns from the dataset. The which() function locates empty columns, and these are subsequently removed using [, -empty_cols]. Finally, the modified data is saved as a new CSV file.
-```R
+
+
+- Removing Empty Columns:  
+This snippet employs the dplyr library to identify and eliminate empty columns from the dataset. The which() function locates empty columns, and these are subsequently removed using [, -empty_cols]. Finally, the modified data is saved as a new CSV file.<br>
+
+
+```{r}
 # Remove any empty columns
 # Load required libraries
 library(dplyr)
@@ -297,7 +303,7 @@ AMR for resistance prediction functionalities.
 - The code offers two approaches to visualize the predictions:
 1. plot(predict_antibiotic) generates a basic plot based on the AMR package's default settings.
 2. ggplot_sir_predict(predict_antibiotic) leverages ggplot2 for a more customized plot displaying the predicted proportions of Susceptible, Intermediate, and Resistant categories for the chosen antibiotic over time.
-```R
+```
 # Future antimicrobial resistance prediction using regression models 
 # AMR package (https://msberends.github.io/AMR/articles/resistance_predict.html)
 # Load the necessary libraries
@@ -325,6 +331,5 @@ predict_antibiotic <- data %>%
 # Plot the resistance prediction results
 plot(predict_antibiotic)
 
-# Plot the predicted SIR (Susceptible, Intermediate, Resistant) proportions
 ggplot_sir_predict(predict_antibiotic)
 ```
