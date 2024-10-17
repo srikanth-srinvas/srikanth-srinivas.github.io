@@ -55,26 +55,38 @@ I also contributed to the analysis of plasmid replicon types and their associati
 In this section, we load the phylogenetic tree data and metadata, create a plot using the `ggtree` package, and overlay bars for each gene from the metadata.
 
 ### Required Libraries
-```r
+
+
+```{r}
 # Load required libraries
 library(ggtree)
 library(ape)
 library(tidyr)
 ```
+
+
 Libraries: We load ggtree for phylogenetic tree visualization, ape for handling tree objects, and tidyr for data manipulation.
 
 ### Reading Metadata and Tree File
-```r
+
+
+```{r}
 # Read the metadata from the CSV file
 metadata <- read.csv("/data/internship_data/srikanth_kpn/global_st147_fastqs/metadata/lj.csv", stringsAsFactors = FALSE)
 
 # Read the tree file (assuming it's in Newick format)
 tree <- read.tree("/data/internship_data/srikanth_kpn/global_st147_fastqs/new_fastqs/snp_phylogeny_output/2023/gubbins_new/mid_point_rooted_ape.nwk")
 ```
+
+
 - Metadata: We read the metadata file containing information about the phylogenetic tree tips.<br>
 - Tree File: The phylogenetic tree is read in Newick format using read.tree.<br>
+
+
 ### Preparing the Tree Data Frame
-```r
+
+
+```{r}
 # Initialize vectors to store tip labels and branch lengths
 tip_labels <- character(length = 2 * tree$Nnode + 1)
 branch_lengths <- numeric(length = length(tip_labels))
@@ -89,20 +101,32 @@ tree_df <- data.frame(tip.label = tip_labels[tip_labels != ""], branch = branch_
 # Save the data frame to a CSV file
 write.csv(tree_df, file = "/data/internship_data/srikanth_kpn/global_st147_fastqs/metadata/tree_df.csv")
 ```
+
+
 - Tree Data: We extract the tip labels and branch lengths from the tree and store them in a data frame tree_df.<br>
 - Save Data: The data frame is saved as a CSV file for future use.<br>
+
+
 ### Merging Metadata with Tree Data
-```r
+
+
+```{r}
 # Calculate y-coordinates for the bars
 y_coords <- seq(0, -1, length.out = nrow(metadata))
 
 # Merge filtered metadata with the tree data based on sample IDs
 tree_with_metadata <- left_join(tree_df, metadata, by="tip.label")
 ```
+
+
 - Y-Coordinates: We generate y_coords for plotting bars based on the number of metadata rows.<br>
 - Merge Data: The tree_df and metadata are merged on the tip.label column.<br>
+
+
 ### Plotting the Tree with Metadata Bars
-```r
+
+
+```{r}
 # Make the original tree plot
 p <- ggtree(tree_with_metadata)
 
@@ -120,6 +144,8 @@ for (gene in colnames(metadata)[-1]) {  # Exclude the 'ids' column
 # Show the plot
 print(p)
 ```
+
+
 - Plot: A base tree plot is created using ggtree.<br>
 - Bars: For each gene in the metadata, colored bars (red for 'yes', white for 'no') are added to the plot, representing the presence or absence of the gene.<br
 
@@ -129,7 +155,9 @@ print(p)
 This section demonstrates how to run **BactDating** to estimate the divergence times in a phylogenetic tree, including loading the tree, merging metadata, and visualizing the results.
 
 ### Required Libraries and Reading Data
-```r
+
+
+```{r}
 # Load libraries
 library(ape)
 library(BactDating)
@@ -138,10 +166,16 @@ library(BactDating)
 t <- read.tree(file="~/pw_fastqs/snp_phylogeny_output/gubbin_out/aligned_pseudogenome.node_labelled.final_tree.tre")
 metadata <- read.csv(file="~/Kpn_data/bactdating/dates.csv")
 ```
+
+
 - Libraries: ape is used for handling phylogenetic trees, and BactDating is used for dating trees.<br>
 - Tree and Metadata: The phylogenetic tree and metadata with date information are loaded.<br>
+
+
 ### Merging Metadata with Tree Labels
-```r
+
+
+```{r}
 # Extract tree tip labels and merge with metadata
 tree_labels <- as.data.frame(t$tip.label)
 merged <- merge(tree_labels, metadata, by.x='t$tip.label', by.y='name', all.x = TRUE, all.y = FALSE)
@@ -149,10 +183,16 @@ merged <- merge(tree_labels, metadata, by.x='t$tip.label', by.y='name', all.x = 
 # Reorder to match the tree tip order
 merged2 <- merged[match(t$tip.label, merged$`t$tip.label`),]
 ```
+
+
 - Merge: The tip labels from the tree are merged with the metadata based on sample names.
 - Reordering: The merged data is reordered to match the order of the tree tip labels.
+
+
 ### Initializing and Running BactDating
-```r
+
+
+```{r}
 # Initialize the rooted tree
 rooted <- initRoot(t, merged2$date)
 
@@ -164,11 +204,17 @@ res <- bactdate(unroot(t), merged2$date, nbIts=10000, initSigma=0.000005,
                 updateSigma=TRUE, updateRoot=TRUE, updateAlpha=TRUE, 
                 updateMu=TRUE, model="relaxedgamma")
 ```
+
+
 - Rooting the Tree: We initialize the rooted tree with the date metadata.<br>
 - Root-to-Tip Regression: roottotip() performs a regression to estimate divergence times.<br>
 - BactDating: bactdate() is used to estimate dates using the relaxedgamma model, running for 10,000 iterations.<br>
+
+
 ### Visualizing the BactDating Results
-```r
+
+
+```{r}
 # Plot the results with confidence intervals
 plot(res, 'treeCI', show.tip.label = TRUE)
 
@@ -183,5 +229,7 @@ res2 <- bactdate(unroot(r), merged2$date, nbIts=10000, initSigma=0.000005,
 # Plot second set of results
 plot(res0, 'treeCI', show.tip.label = TRUE)
 ```
+
+
 - Plot: The BactDating results are visualized with confidence intervals around the divergence time estimates.
 - Additional Runs: Additional BactDating analyses are performed and plotted, including both rooted and unrooted tree versions.
