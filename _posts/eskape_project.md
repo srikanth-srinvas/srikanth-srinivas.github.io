@@ -76,10 +76,14 @@ data <- data[, -empty_cols]
 # Replace "/path/to/your/output/modified_file.csv" with the desired output path and file name
 write.csv(data, "/path/to/your/output/modified_file.csv", row.names = FALSE)
 ```
+
+
 ## 2. Data Visualisation
 - Distribution Plot of Samples:
 This code snippet leverages the ggplot2 and maps libraries to create a world map illustrating the geographical distribution of samples across the globe. The data is merged with a world map using inner_join(), and the plot is customized using various ggplot2 functions. Finally, the plot is saved as a PNG image.
-```R
+
+
+```{r}
 # Creating a distribution plot of samples across the world from the provided dataset 
 # Load required libraries
 library(ggplot2)
@@ -120,13 +124,17 @@ plot <- ggplot() +
 # Replace "/path/to/your/output/sample_map.png" with the desired output path and file name
 ggsave("/path/to/your/output/sample_map.png", plot, width = 10, height = 6, dpi = 300)
 ```
+
+
 **Analyzing Prevalence by Species and Year: Key Steps**
 - Load required libraries: ggplot2 and dplyr.
 - Read CSV data: Ensure correct file path and column names.
 - Check data quality: Verify for missing and duplicate values in 'Year' and 'n' columns.
 - Create line plot: Use ggplot() to define aesthetics (x, y, group, color), add lines and points, set labels, and apply a theme.
 - Display and save: Print the plot and save it as a PNG file.
-```R
+
+
+```{r}
 # To generate a plot for prevalence of species by year 
 # Load required libraries
 library(ggplot2)
@@ -163,6 +171,7 @@ print(line_plot)
 ggsave("/path/to/your/output/line_plot.png", line_plot, width = 10, height = 6, dpi = 300)
 ```
 
+
 ## 3. Analyzing MDR Isolate Count
 1. Data Preprocessing:
 
@@ -193,7 +202,9 @@ Specify Parameters:
 - Use geom_bar() to create bars for total counts and MDR counts, using different colors for each.
 - Add text labels for the proportion of MDR isolates.
 - Customize the plot with titles, labels, and theme settings as desired.
-```R
+
+
+```{r}
 # preparing the data for MDR analysis using the AMR package 
 # First convert the entries in the dataset columns into R,I,S format from Resistant,Intermediate,Susceptible format 
 # Load required libraries
@@ -276,6 +287,8 @@ ggplot(mdr_data, aes(x = reorder(pathogen, total_count), y = total_count, fill =
         legend.title = element_blank(),
         axis.text = element_text(color = "black"))
 ```
+
+
 ## 4. Predicting Future Antibiotic Resistance Trends <br>
 This code snippet explores the possibility of predicting future resistance patterns using the AMR package. Here's a breakdown of the steps involved:
 
@@ -303,7 +316,9 @@ AMR for resistance prediction functionalities.
 - The code offers two approaches to visualize the predictions:
 1. plot(predict_antibiotic) generates a basic plot based on the AMR package's default settings.
 2. ggplot_sir_predict(predict_antibiotic) leverages ggplot2 for a more customized plot displaying the predicted proportions of Susceptible, Intermediate, and Resistant categories for the chosen antibiotic over time.
-```
+
+
+```{r}
 # Future antimicrobial resistance prediction using regression models 
 # AMR package (https://msberends.github.io/AMR/articles/resistance_predict.html)
 # Load the necessary libraries
