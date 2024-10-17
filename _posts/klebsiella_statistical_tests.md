@@ -33,21 +33,29 @@ This work is published in the journal Microbial Genomics under the DOI: [https:/
 
 We load the necessary R libraries to handle data manipulation and perform Fisher's exact tests.
 
-```r
+```{r}
 # Load necessary libraries
 library(dplyr)
 library(tidyverse)
 library(magrittr)
 ```
+
+
 ### Step 2: Read the Data
 The CSV file contains information on the Klebsiella pneumoniae isolates, including virulence factors and K/O loci data.
-```r
+
+
+```{r}
 # Load dataset from CSV
 mr_data_2 <- read.csv("~/Downloads/MR_data_K & O Loci _1072.csv")
 ```
+
+
 ### Step 3: Perform Fisher's Exact Test for Virulence Factors
 Here, we perform Fisher's exact test to determine if there is a statistically significant association between the presence of specific virulence factors (Yersiniabactin, Colibactin, Aerobactin, Salmochelin, RmpADC, rmpA2) and invasive disease.
-```r
+
+
+```{r}
 # Fisher's exact test for Yersiniabactin
 contingency_table_invas_yer <- table(mr_data_2$Invasive, mr_data_2$Yersiniabactin)
 result_invas_yer <- fisher.test(contingency_table_invas_yer)
@@ -78,9 +86,13 @@ contingency_table_invas_rmpa2 <- table(mr_data_2$Invasive, mr_data_2$rmpA2)
 result_invas_rmpa2 <- fisher.test(contingency_table_invas_rmpa2)
 print(result_invas_rmpa2)
 ```
+
+
 ### Step 4: Fisher's Test for K/O Loci vs Invasive Disease
 Here, we test whether there is an association between specific K and O loci (e.g., KL64, KL51, O1/O2v1) and invasive disease.
-```r
+
+
+```{r}
 # Define K and O loci of interest
 k_types_of_interest <- c("KL64", "KL51","KL2","KL10")
 o_types_of_interest <- c("O1/O2v1", "O1/O2v2", "OL101")
@@ -101,9 +113,13 @@ for (o_locus in o_types_of_interest) {
   cat("P-value:", fisher_result_o$p.value, "\n\n")
 }
 ```
+
+
 ### Step 5: Fisher's Test for K Loci vs Sequence Type (ST)
 We perform Fisher's test to determine the relationship between Klebsiella pneumoniae sequence types (ST) and specific K loci.
-```r
+
+
+```{r}
 # Fisher's exact test for K Loci vs ST
 fisher_test_results_st <- data.frame()
 
@@ -129,9 +145,13 @@ for (st in unique(mr_data_2$ST)) {
 
 print(fisher_test_results_st)
 ```
+
+
 ### Step 6: Fisher's Test for K/O Loci vs Carbapenem Genes
 Here, we perform Fisher's exact test to determine the association between K and O loci and the presence of carbapenemase genes.
-```r
+
+
+```{r}
 # Fisher's exact test for K Loci vs Carbapenem Genes
 results_KL <- data.frame(K_locus = character(), P_value = numeric())
 unique_k_locus <- unique(mr_data_2$K_locus)
@@ -163,17 +183,23 @@ This analysis provides insights into the relationship between virulence factors,
 This analysis calculates **Simpson's Diversity Index** for the K-locus and O-locus across different regions and age groups. The script performs calculations for both the full dataset and deduplicated data, and it confirms the results using the `vegan` package.
 
 ### Libraries and Data
-```r
+
+
+```{r}
 # Load necessary libraries
 library(dplyr)
 library(vegan)
 library(magrittr)
 library(ggplot2)
 ```
+
+
 ### Full Dataset: Simpson's Diversity Index for K-locus by Region
 - Data: Full dataset of 1072 entries <br>
 - Calculation: Group the data by region and calculate Simpson's Diversity Index using the K-locus data.<br>
-```r
+
+
+```{r}
 # Load the full dataset
 mr_all_data <- read.csv("~/Downloads/MR_data_K & O Loci _1072.csv")
 
@@ -185,10 +211,14 @@ diversity_by_region_K_all_data <- mr_all_data %>%
 # Print the results
 print(diversity_by_region_K_all_data)
 ```
+
+
 ### Full Dataset: Simpson's Diversity Index for K-locus by Age Group
 - Data: Full dataset of 1072 entries <br>
 - Calculation: Group the data by age group and calculate Simpson's Diversity Index for the K-locus data. <br>
-```r
+
+
+```{r}
 # Group by age and calculate Simpson's Diversity Index for K-locus
 diversity_by_age_K_all_data <- mr_all_data %>%
   group_by(Age_group) %>%
@@ -197,10 +227,14 @@ diversity_by_age_K_all_data <- mr_all_data %>%
 # Print the results
 print(diversity_by_age_K_all_data)
 ```
+
+
 ### Full Dataset: Simpson's Diversity Index for O-locus by Region
 - Data: Full dataset of 1072 entries <br>
 - Calculation: Group the data by region and calculate Simpson's Diversity Index using O-locus data. <br>
-```r
+
+
+```{r}
 # Group by region and calculate Simpson's Diversity Index for O-locus
 diversity_by_region_O_all_data <- mr_all_data %>%
   group_by(Regions) %>%
@@ -209,10 +243,14 @@ diversity_by_region_O_all_data <- mr_all_data %>%
 # Print the results
 print(diversity_by_region_O_all_data)
 ```
+
+
 ### Deduplicated Dataset: Simpson's Diversity Index for K-locus by Region
 - Data: Deduplicated dataset <br>
 - Calculation: Group the deduplicated data by region and calculate Simpson's Diversity Index for K-locus. <br>
-```r
+
+
+```{r}
 # Load deduplicated data
 derep_data <- read.csv("~/Downloads/Derplicated_MR.csv")
 
@@ -224,10 +262,14 @@ diversity_by_region_K_derep_data <- derep_data %>%
 # Print the results
 print(diversity_by_region_K_derep_data)
 ```
+
+
 ### Deduplicated Dataset: Simpson's Diversity Index for K-locus by Age Group
 - Data: Deduplicated dataset <br>
 - Calculation: Group the deduplicated data by age group and calculate Simpson's Diversity Index for K-locus. <br>
-```r
+
+
+```{r}
 # Group by age and calculate Simpson's Diversity Index for K-locus
 diversity_by_age_K_derep_data <- derep_data %>%
   group_by(Age_group) %>%
@@ -236,10 +278,14 @@ diversity_by_age_K_derep_data <- derep_data %>%
 # Print the results
 print(diversity_by_age_K_derep_data)
 ```
+
+
 ### Deduplicated Dataset: Simpson's Diversity Index for O-locus by Region
 - Data: Deduplicated dataset <br>
 - Calculation: Group the deduplicated data by region and calculate Simpson's Diversity Index for O-locus. <br>
-```r
+
+
+```{r}
 # Group by region and calculate Simpson's Diversity Index for O-locus
 diversity_by_region_O_derep <- derep_data %>%
   group_by(Regions) %>%
@@ -248,12 +294,16 @@ diversity_by_region_O_derep <- derep_data %>%
 # Print the results
 print(diversity_by_region_O_derep)
 ```
+
+
 ### Reconfirmation Using the Vegan Package
 - Purpose: Reconfirm the Simpson’s Diversity Index using the vegan package.
 - Steps:
   - Create a table of counts of K-locus per region.
   - Use the diversity() function from the vegan package.
-```r
+
+
+```{r}
 # Create a table of K-locus counts by region
 k_locus_table_derep <- table(derep_data$Regions, derep_data$K_locus)
 
@@ -263,9 +313,13 @@ simpson_diversity_derep <- apply(k_locus_table_derep, 1, function(x) diversity(x
 # Print the results
 print(simpson_diversity_derep)
 ```
+
+
 ### Visualizing Simpson's Diversity Index (Optional)
 You can use the ggplot2 library to visualize the diversity indices by region. <br>
-```r
+
+
+```{r}
 # Visualize Simpson's Diversity Index by region for the deduplicated K-locus data
 ggplot(diversity_by_region_K_derep_data, aes(x = Regions, y = Simpson_Diversity_Index)) +
   geom_bar(stat = "identity", fill = "skyblue") +
@@ -274,5 +328,7 @@ ggplot(diversity_by_region_K_derep_data, aes(x = Regions, y = Simpson_Diversity_
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
+
+
 ### Conclusion
 In this analysis, we calculated the Simpson’s Diversity Index across different groupings (region and age group) for both the full dataset and the deduplicated data. We confirmed the results using the vegan package, and visualized them using ggplot2.

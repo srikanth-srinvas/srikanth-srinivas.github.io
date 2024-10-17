@@ -1,235 +1,278 @@
 ---
-title: "The Global Threat of ST147 Klebsiella pneumoniae
+title: "K and O loci
 "
 layout: post
 date: 2024-07-02
 tag:
+- R
 - Klebsiella pneumoniae
-- ST147
-- MDR (Multidrug-resistant)
-- Nosocomial infections
-- Antimicrobial resistance (AMR)
-- Time-scaled Phylogenetics 
-- R programming
-
+- K loci
+- O loci
+- Capsule serotyping
+- Antibiotic resistance
+- Virulence factors
+- Public health
+- Infectious diseases
 
 
 projects: true
-description: "The Global Threat of ST147 Klebsiella pneumoniae"
+description: "Predicting Resistance Trends of ESKAPE Pathogens using R"
 ---
 
 **Bangalore, India 2023**
 
 ---
 ## Introduction
-**ST147 *Klebsiella pneumoniae* has emerged as a significant global health concern due to its multidrug resistance and rapid spread. While extensively studied in European and North American settings, its prevalence and characteristics in India and Southeast Asia remain under-explored. This study aimed to comprehensively characterize ST147 isolates from India and compare them to a global dataset to understand their unique features and contribution to the global burden of MDR *K. pneumoniae*.**
+**This project contains R scripts associated with a study ocused on understanding the geographical distribution and diversity of *Klebsiella pneumoniae* serotypes in India. Using genomic data from *Klebsiella pneumoniae* isolates, we employed Fisher’s exact test to examine the relationship between specific serotypes and geographical regions. I employed Simpson’s diversity index to assess serotype diversity within different regions. By combining these statistical analyses with the geographical data, I was able to identify patterns in serotype distribution and uncover potential regional variations in the pathogen’s virulence and antibiotic resistance.**
 
-## Background
-- ST147's Global Rise: ST147 *K. pneumoniae* has been identified as a major contributor to the global burden of antimicrobial resistance, particularly in healthcare settings. <br>
-- India's Unique Challenges: India faces a unique challenge due to the high prevalence of ST147 strains carrying various carbapenemase genes.<br>
-- Knowledge Gaps: Despite previous studies, a comprehensive understanding of ST147's epidemiology, transmission pathways, and molecular mechanisms in India remains elusive.<br>
+This work is published in the journal Microbial Genomics under the DOI: [https://doi.org/10.1099/mgen.0.001271]
 
-## My Role in the Study
-As a member of the Bioinformatics team, I played a crucial role in:
+## Step-by-step Process to use Fisher's exact test on my dataset
 
-- Literature Review: Conducting a thorough literature review to identify knowledge gaps and inform our research design.<br>
-- Methodology Development: Contributing to the development of the research methodology, including data collection and analysis techniques.<br>
-- Data Analysis: Actively participating in the analysis of genomic data to characterize ST147 isolates and identify their unique features.
-- Manuscript Preparation: Contributing to the writing and editing of the research manuscript<br>
-## Methods
-- **Genome Sequencing:** Whole-genome sequencing of ST147 isolates using the Illumina MiSeq platform.<br>
-- **Genomic Characterization:** De novo assembly and genomic characterization using Kleborate.<br>
-- **Antimicrobial Resistance Analysis:** In silico prediction of antimicrobial resistance using Kleborate and AMRfinderPlus.<br>
-- **Plasmid Analysis:** Identification of plasmid replicon types and their association with resistance genes.<br>
-- **Global Comparison:** Comparison of Indian ST147 isolates with a global dataset to identify unique features.<br>
+### Step 1: Load Required Libraries
 
-## Results
-**Global Phylogeny and Time-Scaled Analysis**<br>
-I played a pivotal role in constructing the time-scaled phylogeny using the GHRU-SNP phylogeny pipeline and removing recombinations using the Gubbins software. By carefully analyzing the genomic data, we were able to identify multiple introduction events of ST147 into India, suggesting ongoing clonal expansion. Additionally, we employed the BactDating R package to estimate the time of the most recent common ancestor (MRCA), finding it to be around 1987.<br>
-**Plasmid Replicon Types and Resistance Gene Associations**
-I also contributed to the analysis of plasmid replicon types and their association with resistance genes. Using tools like Plasmidfinder and Mobsuite, We were able to identify the nature of contigs containing AMR genes and determine whether they were carried on plasmids or chromosomes. This analysis provided valuable insights into the molecular mechanisms underlying the observed multidrug resistance phenotype facilitated by hybrid plasmids carrying carbapenemase genes.
+We load the necessary R libraries to handle data manipulation and perform Fisher's exact tests.
 
-## Here are some R scripts that I have written to contribute to this study:
-### Phylogenetic Tree Plot with Metadata Bars
-
-In this section, we load the phylogenetic tree data and metadata, create a plot using the `ggtree` package, and overlay bars for each gene from the metadata.
-
-### Required Libraries
-
-
-```{r}
-# Load required libraries
-library(ggtree)
-library(ape)
-library(tidyr)
+```r
+# Load necessary libraries
+library(dplyr)
+library(tidyverse)
+library(magrittr)
 ```
-
-
-Libraries: We load ggtree for phylogenetic tree visualization, ape for handling tree objects, and tidyr for data manipulation.
-
-### Reading Metadata and Tree File
-
-
-```{r}
-# Read the metadata from the CSV file
-metadata <- read.csv("/data/internship_data/srikanth_kpn/global_st147_fastqs/metadata/lj.csv", stringsAsFactors = FALSE)
-
-# Read the tree file (assuming it's in Newick format)
-tree <- read.tree("/data/internship_data/srikanth_kpn/global_st147_fastqs/new_fastqs/snp_phylogeny_output/2023/gubbins_new/mid_point_rooted_ape.nwk")
+### Step 2: Read the Data
+The CSV file contains information on the Klebsiella pneumoniae isolates, including virulence factors and K/O loci data.
+```r
+# Load dataset from CSV
+mr_data_2 <- read.csv("~/Downloads/MR_data_K & O Loci _1072.csv")
 ```
+### Step 3: Perform Fisher's Exact Test for Virulence Factors
+Here, we perform Fisher's exact test to determine if there is a statistically significant association between the presence of specific virulence factors (Yersiniabactin, Colibactin, Aerobactin, Salmochelin, RmpADC, rmpA2) and invasive disease.
+```r
+# Fisher's exact test for Yersiniabactin
+contingency_table_invas_yer <- table(mr_data_2$Invasive, mr_data_2$Yersiniabactin)
+result_invas_yer <- fisher.test(contingency_table_invas_yer)
+print(result_invas_yer)
 
+# Fisher's exact test for Colibactin
+contingency_table_invas_coli <- table(mr_data_2$Invasive, mr_data_2$Colibactin)
+result_invas_coli <- fisher.test(contingency_table_invas_coli)
+print(result_invas_coli)
 
-- Metadata: We read the metadata file containing information about the phylogenetic tree tips.<br>
-- Tree File: The phylogenetic tree is read in Newick format using read.tree.<br>
+# Fisher's exact test for Aerobactin
+contingency_table_invas_aero <- table(mr_data_2$Invasive, mr_data_2$Aerobactin)
+result_invas_aero <- fisher.test(contingency_table_invas_aero)
+print(result_invas_aero)
 
+# Fisher's exact test for Salmochelin
+contingency_table_invas_salmo <- table(mr_data_2$Invasive, mr_data_2$Salmochelin)
+result_invas_salmo <- fisher.test(contingency_table_invas_salmo)
+print(result_invas_salmo)
 
-### Preparing the Tree Data Frame
+# Fisher's exact test for RmpADC
+contingency_table_invas_rmpADC <- table(mr_data_2$Invasive, mr_data_2$RmpADC)
+result_invas_rmpADC <- fisher.test(contingency_table_invas_rmpADC)
+print(result_invas_rmpADC)
 
-
-```{r}
-# Initialize vectors to store tip labels and branch lengths
-tip_labels <- character(length = 2 * tree$Nnode + 1)
-branch_lengths <- numeric(length = length(tip_labels))
-
-# Assign tip labels and branch lengths
-tip_labels[tree$edge[, 1]] <- tree$tip.label
-branch_lengths[tree$edge[, 1]] <- tree$edge.length
-
-# Create the tree_df data frame
-tree_df <- data.frame(tip.label = tip_labels[tip_labels != ""], branch = branch_lengths[tip_labels != ""])
-
-# Save the data frame to a CSV file
-write.csv(tree_df, file = "/data/internship_data/srikanth_kpn/global_st147_fastqs/metadata/tree_df.csv")
+# Fisher's exact test for rmpA2
+contingency_table_invas_rmpa2 <- table(mr_data_2$Invasive, mr_data_2$rmpA2)
+result_invas_rmpa2 <- fisher.test(contingency_table_invas_rmpa2)
+print(result_invas_rmpa2)
 ```
+### Step 4: Fisher's Test for K/O Loci vs Invasive Disease
+Here, we test whether there is an association between specific K and O loci (e.g., KL64, KL51, O1/O2v1) and invasive disease.
+```r
+# Define K and O loci of interest
+k_types_of_interest <- c("KL64", "KL51","KL2","KL10")
+o_types_of_interest <- c("O1/O2v1", "O1/O2v2", "OL101")
 
-
-- Tree Data: We extract the tip labels and branch lengths from the tree and store them in a data frame tree_df.<br>
-- Save Data: The data frame is saved as a CSV file for future use.<br>
-
-
-### Merging Metadata with Tree Data
-
-
-```{r}
-# Calculate y-coordinates for the bars
-y_coords <- seq(0, -1, length.out = nrow(metadata))
-
-# Merge filtered metadata with the tree data based on sample IDs
-tree_with_metadata <- left_join(tree_df, metadata, by="tip.label")
-```
-
-
-- Y-Coordinates: We generate y_coords for plotting bars based on the number of metadata rows.<br>
-- Merge Data: The tree_df and metadata are merged on the tip.label column.<br>
-
-
-### Plotting the Tree with Metadata Bars
-
-
-```{r}
-# Make the original tree plot
-p <- ggtree(tree_with_metadata)
-
-# Create bars for each gene
-for (gene in colnames(metadata)[-1]) {  # Exclude the 'ids' column
-  tree_with_metadata <- mutate(tree_with_metadata, !!paste0(gene, "_y") := y_coords)
-  
-  p <- p + geom_segment(data = tree_with_metadata,
-                        aes(x = branch, xend = branch, y = !!sym(paste0(gene, "_y")),
-                            yend = !!sym(paste0(gene, "_y")), color = !!sym(gene)),
-                        size = 3) +
-    scale_color_manual(name = gene, values = c("yes" = "red", "no" = "white"), guide = "none")
+# Fisher's exact test for K loci
+for (k_locus in k_types_of_interest) {
+  contingency_table_k <- table(mr_data_2$Invasive, mr_data_2$K_locus == k_locus)
+  fisher_result_k <- fisher.test(contingency_table_k)
+  cat("Fisher's exact test for K-type", k_locus, ":\n")
+  cat("P-value:", fisher_result_k$p.value, "\n\n")
 }
 
-# Show the plot
-print(p)
+# Fisher's exact test for O loci
+for (o_locus in o_types_of_interest) {
+  contingency_table_o <- table(mr_data_2$Invasive, mr_data_2$O_locus == o_locus)
+  fisher_result_o <- fisher.test(contingency_table_o)
+  cat("Fisher's exact test for O-type", o_locus, ":\n")
+  cat("P-value:", fisher_result_o$p.value, "\n\n")
+}
+```
+### Step 5: Fisher's Test for K Loci vs Sequence Type (ST)
+We perform Fisher's test to determine the relationship between Klebsiella pneumoniae sequence types (ST) and specific K loci.
+```r
+# Fisher's exact test for K Loci vs ST
+fisher_test_results_st <- data.frame()
+
+for (st in unique(mr_data_2$ST)) {
+  st_subset <- mr_data_2 %>% filter(ST == st)
+  unique_combinations <- st_subset %>% distinct(ST, K_locus)
+  
+  for (i in 1:nrow(unique_combinations)) {
+    k_locus <- unique_combinations[i, "K_locus"]
+    
+    subset_df <- st_subset %>% filter(ST == st, K_locus == k_locus)
+    
+    if (nrow(subset_df) >= 2) {
+      contingency_table <- matrix(c(nrow(subset_df), 0, 0, 0), nrow = 2)
+      contingency_table[1, "Present"] <- sum(subset_df$K_locus == k_locus)
+      contingency_table[2, "Absent"] <- sum(subset_df$K_locus != k_locus)
+      
+      result <- fisher.test(contingency_table)
+      fisher_test_results_st <- bind_rows(fisher_test_results_st, data.frame(ST = st, K_locus = k_locus, p_value = result$p.value))
+    }
+  }
+}
+
+print(fisher_test_results_st)
+```
+### Step 6: Fisher's Test for K/O Loci vs Carbapenem Genes
+Here, we perform Fisher's exact test to determine the association between K and O loci and the presence of carbapenemase genes.
+```r
+# Fisher's exact test for K Loci vs Carbapenem Genes
+results_KL <- data.frame(K_locus = character(), P_value = numeric())
+unique_k_locus <- unique(mr_data_2$K_locus)
+
+for (k_locus in unique_k_locus) {
+  contingency_table_k <- table(mr_data_2$Bla_Carb_acquired, mr_data_2$K_locus == k_locus)
+  fisher_result_k <- fisher.test(contingency_table_k, simulate.p.value = TRUE)
+  results_KL <- rbind(results_KL, data.frame(K_locus = k_locus, P_value = fisher_result_k$p.value))
+}
+
+print(results_KL)
+# Fisher's exact test for O Loci vs Carbapenem Genes
+results_O <- data.frame(O_locus = character(), P_value = numeric())
+unique_o_locus <- unique(mr_data_2$O_locus)
+
+for (o_locus in unique_o_locus) {
+  contingency_table_o <- table(mr_data_2$Bla_Carb_acquired, mr_data_2$O_locus == o_locus)
+  fisher_result_o <- fisher.test(contingency_table_o, simulate.p.value = TRUE)
+  results_O <- rbind(results_O, data.frame(O_locus = o_locus, P_value = fisher_result_o$p.value))
+}
+
+print(results_O)
 ```
 
+### Conclusion
+This analysis provides insights into the relationship between virulence factors, K/O loci, and key characteristics in Klebsiella pneumoniae, leveraging Fisher's exact test to assess statistical significance.
 
-- Plot: A base tree plot is created using ggtree.<br>
-- Bars: For each gene in the metadata, colored bars (red for 'yes', white for 'no') are added to the plot, representing the presence or absence of the gene.<br
+## Step-by-step process employed to use Simpson's diversity index on my data
+This analysis calculates **Simpson's Diversity Index** for the K-locus and O-locus across different regions and age groups. The script performs calculations for both the full dataset and deduplicated data, and it confirms the results using the `vegan` package.
 
-## Script 2: BactDating Phylogenetic Analysis
-## BactDating Phylogenetic Analysis
-
-This section demonstrates how to run **BactDating** to estimate the divergence times in a phylogenetic tree, including loading the tree, merging metadata, and visualizing the results.
-
-### Required Libraries and Reading Data
-
-
-```{r}
-# Load libraries
-library(ape)
-library(BactDating)
-
-# Read the tree file and metadata
-t <- read.tree(file="~/pw_fastqs/snp_phylogeny_output/gubbin_out/aligned_pseudogenome.node_labelled.final_tree.tre")
-metadata <- read.csv(file="~/Kpn_data/bactdating/dates.csv")
+### Libraries and Data
+```r
+# Load necessary libraries
+library(dplyr)
+library(vegan)
+library(magrittr)
+library(ggplot2)
 ```
+### Full Dataset: Simpson's Diversity Index for K-locus by Region
+- Data: Full dataset of 1072 entries <br>
+- Calculation: Group the data by region and calculate Simpson's Diversity Index using the K-locus data.<br>
+```r
+# Load the full dataset
+mr_all_data <- read.csv("~/Downloads/MR_data_K & O Loci _1072.csv")
 
+# Group by region and calculate Simpson's Diversity Index for K-locus
+diversity_by_region_K_all_data <- mr_all_data %>%
+  group_by(Regions) %>%
+  summarize(Simpson_Diversity_Index = 1 - sum((table(K_locus) / sum(table(K_locus)))^2))
 
-- Libraries: ape is used for handling phylogenetic trees, and BactDating is used for dating trees.<br>
-- Tree and Metadata: The phylogenetic tree and metadata with date information are loaded.<br>
-
-
-### Merging Metadata with Tree Labels
-
-
-```{r}
-# Extract tree tip labels and merge with metadata
-tree_labels <- as.data.frame(t$tip.label)
-merged <- merge(tree_labels, metadata, by.x='t$tip.label', by.y='name', all.x = TRUE, all.y = FALSE)
-
-# Reorder to match the tree tip order
-merged2 <- merged[match(t$tip.label, merged$`t$tip.label`),]
+# Print the results
+print(diversity_by_region_K_all_data)
 ```
+### Full Dataset: Simpson's Diversity Index for K-locus by Age Group
+- Data: Full dataset of 1072 entries <br>
+- Calculation: Group the data by age group and calculate Simpson's Diversity Index for the K-locus data. <br>
+```r
+# Group by age and calculate Simpson's Diversity Index for K-locus
+diversity_by_age_K_all_data <- mr_all_data %>%
+  group_by(Age_group) %>%
+  summarize(Simpson_Diversity_Index = 1 - sum((table(K_locus) / sum(table(K_locus)))^2))
 
-
-- Merge: The tip labels from the tree are merged with the metadata based on sample names.
-- Reordering: The merged data is reordered to match the order of the tree tip labels.
-
-
-### Initializing and Running BactDating
-
-
-```{r}
-# Initialize the rooted tree
-rooted <- initRoot(t, merged2$date)
-
-# Root-to-tip regression for time estimates
-r <- roottotip(rooted, merged2$date)
-
-# Run BactDating with a relaxed gamma model
-res <- bactdate(unroot(t), merged2$date, nbIts=10000, initSigma=0.000005, 
-                updateSigma=TRUE, updateRoot=TRUE, updateAlpha=TRUE, 
-                updateMu=TRUE, model="relaxedgamma")
+# Print the results
+print(diversity_by_age_K_all_data)
 ```
+### Full Dataset: Simpson's Diversity Index for O-locus by Region
+- Data: Full dataset of 1072 entries <br>
+- Calculation: Group the data by region and calculate Simpson's Diversity Index using O-locus data. <br>
+```r
+# Group by region and calculate Simpson's Diversity Index for O-locus
+diversity_by_region_O_all_data <- mr_all_data %>%
+  group_by(Regions) %>%
+  summarize(Simpson_Diversity_Index = 1 - sum((table(O_locus) / sum(table(O_locus)))^2))
 
-
-- Rooting the Tree: We initialize the rooted tree with the date metadata.<br>
-- Root-to-Tip Regression: roottotip() performs a regression to estimate divergence times.<br>
-- BactDating: bactdate() is used to estimate dates using the relaxedgamma model, running for 10,000 iterations.<br>
-
-
-### Visualizing the BactDating Results
-
-
-```{r}
-# Plot the results with confidence intervals
-plot(res, 'treeCI', show.tip.label = TRUE)
-
-# Additional BactDating run on previously rooted tree
-res0 <- bactdate(rooted, merged2$date)
-
-# Run BactDating again on unrooted tree from root-to-tip regression
-res2 <- bactdate(unroot(r), merged2$date, nbIts=10000, initSigma=0.000005, 
-                 updateSigma=TRUE, updateRoot=TRUE, updateAlpha=TRUE, 
-                 updateMu=TRUE, model="relaxedgamma")
-
-# Plot second set of results
-plot(res0, 'treeCI', show.tip.label = TRUE)
+# Print the results
+print(diversity_by_region_O_all_data)
 ```
+### Deduplicated Dataset: Simpson's Diversity Index for K-locus by Region
+- Data: Deduplicated dataset <br>
+- Calculation: Group the deduplicated data by region and calculate Simpson's Diversity Index for K-locus. <br>
+```r
+# Load deduplicated data
+derep_data <- read.csv("~/Downloads/Derplicated_MR.csv")
 
+# Group by region and calculate Simpson's Diversity Index for K-locus
+diversity_by_region_K_derep_data <- derep_data %>%
+  group_by(Regions) %>%
+  summarize(Simpson_Diversity_Index = 1 - sum((table(K_locus) / sum(table(K_locus)))^2))
 
-- Plot: The BactDating results are visualized with confidence intervals around the divergence time estimates.
-- Additional Runs: Additional BactDating analyses are performed and plotted, including both rooted and unrooted tree versions.
+# Print the results
+print(diversity_by_region_K_derep_data)
+```
+### Deduplicated Dataset: Simpson's Diversity Index for K-locus by Age Group
+- Data: Deduplicated dataset <br>
+- Calculation: Group the deduplicated data by age group and calculate Simpson's Diversity Index for K-locus. <br>
+```r
+# Group by age and calculate Simpson's Diversity Index for K-locus
+diversity_by_age_K_derep_data <- derep_data %>%
+  group_by(Age_group) %>%
+  summarize(Simpson_Diversity_Index = 1 - sum((table(K_locus) / sum(table(K_locus)))^2))
+
+# Print the results
+print(diversity_by_age_K_derep_data)
+```
+### Deduplicated Dataset: Simpson's Diversity Index for O-locus by Region
+- Data: Deduplicated dataset <br>
+- Calculation: Group the deduplicated data by region and calculate Simpson's Diversity Index for O-locus. <br>
+```r
+# Group by region and calculate Simpson's Diversity Index for O-locus
+diversity_by_region_O_derep <- derep_data %>%
+  group_by(Regions) %>%
+  summarize(Simpson_Diversity_Index = 1 - sum((table(O_locus) / sum(table(O_locus)))^2))
+
+# Print the results
+print(diversity_by_region_O_derep)
+```
+### Reconfirmation Using the Vegan Package
+- Purpose: Reconfirm the Simpson’s Diversity Index using the vegan package.
+- Steps:
+  - Create a table of counts of K-locus per region.
+  - Use the diversity() function from the vegan package.
+```r
+# Create a table of K-locus counts by region
+k_locus_table_derep <- table(derep_data$Regions, derep_data$K_locus)
+
+# Calculate Simpson's Diversity Index for each region using the vegan package
+simpson_diversity_derep <- apply(k_locus_table_derep, 1, function(x) diversity(x, index = "simpson"))
+
+# Print the results
+print(simpson_diversity_derep)
+```
+### Visualizing Simpson's Diversity Index (Optional)
+You can use the ggplot2 library to visualize the diversity indices by region. <br>
+```r
+# Visualize Simpson's Diversity Index by region for the deduplicated K-locus data
+ggplot(diversity_by_region_K_derep_data, aes(x = Regions, y = Simpson_Diversity_Index)) +
+  geom_bar(stat = "identity", fill = "skyblue") +
+  labs(x = "Regions", y = "Simpson's Diversity Index") +
+  ggtitle("Simpson's Diversity Index by Region for K-locus") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+### Conclusion
+In this analysis, we calculated the Simpson’s Diversity Index across different groupings (region and age group) for both the full dataset and the deduplicated data. We confirmed the results using the vegan package, and visualized them using ggplot2.
